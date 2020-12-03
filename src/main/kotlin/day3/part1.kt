@@ -5,8 +5,8 @@ import util.readInput
 fun main() {
 
     val treePositions = mutableSetOf<String>()
-
     val rows = readInput(3)
+
     rows.forEachIndexed { rowIndex, s ->
         s.forEachIndexed { charIndex, c ->
             if(c == '#') {
@@ -14,6 +14,7 @@ fun main() {
             }
         }
     }
+
     var activeY = 0
     var activeX = 0
     var treesHit = 0
@@ -32,7 +33,6 @@ fun main() {
     println("Trees hit: $treesHit")
 }
 
-private fun hashPosition(x: Int, y: Int): String {
-    return "$x&$y"
-}
+private fun hashPosition(x: Int, y: Int) = "$x&$y"
+
 

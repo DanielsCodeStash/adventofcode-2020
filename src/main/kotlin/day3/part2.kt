@@ -42,7 +42,6 @@ private fun getTreesHit(deltaX: Int, deltaY: Int, rows: List<String>, treePositi
     return treesHit
 }
 
-private fun hashPosition(x: Int, y: Int): String {
-    return "$x&$y"
-}
+private fun hashPosition(x: Int, y: Int) = "$x&$y"
+
 
