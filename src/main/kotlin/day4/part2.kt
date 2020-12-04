@@ -57,7 +57,7 @@ private fun fieldIsValid(name: String, data: String): Boolean {
                 else -> false
             }
         }
-        "hcl" -> return data.isNotEmpty() && "#[a-f0-9]{6}".toRegex().matches(data)
+        "hcl" -> return Regex("#[a-f0-9]{6}").matches(data)
         "ecl" -> return listOf("amb", "blu", "brn", "gry", "grn", "hzl", "oth").contains(data)
         "pid" -> return validDigits(data,9)
     }
