@@ -2,12 +2,6 @@ package day4
 
 import util.readInput
 
-class Passport(var data: MutableMap<String, String> = mutableMapOf()) {
-    override fun toString(): String {
-        return data.entries.toString()
-    }
-}
-
 fun main() {
 
     val input = readInput(4)
@@ -15,12 +9,16 @@ fun main() {
     val passports = mutableListOf<Passport>()
     var activePassport = Passport()
 
-    for((i, row) in input.withIndex()) {
+    for(row in input) {
 
-        if(i == input.size-1 || row.isBlank()) {
+        if(row.isBlank()) {
             passports.add(activePassport)
             activePassport = Passport()
             continue
+        }
+
+        if(activePassport.data.isNotEmpty()) {
+            passports.add(activePassport)
         }
 
         row.split(" ").forEach { dataEntry ->
