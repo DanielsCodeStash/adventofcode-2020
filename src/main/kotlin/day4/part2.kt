@@ -52,7 +52,6 @@ private fun fieldIsValid(name: String, data: String): Boolean {
         "eyr" -> return validDigits(data, 4) && data.toInt() in 2020..2030
         "hgt" -> {
             return when {
-                data.length < 3 -> false
                 data.endsWith("cm") -> data.removeSuffix("cm").toInt() in 150..193
                 data.endsWith("in") -> data.removeSuffix("in").toInt() in 59..76
                 else -> false
