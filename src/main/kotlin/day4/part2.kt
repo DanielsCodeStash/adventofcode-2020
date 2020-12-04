@@ -63,7 +63,7 @@ private fun fieldIsValid(name: String, data: String): Boolean {
         "pid" -> return validDigits(data,9)
     }
 
-    return true
+    return false
 }
 
 private fun validDigits(data: String, num: Int): Boolean {
