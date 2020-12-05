@@ -8,7 +8,7 @@ fun main() {
 
     val rowColumnPasses = rows
         .map { Pair(it.substring(0, 7), it.substring(7, 10)) }
-        .map{ Pair(toBinaryString('B', 'F', it.first), toBinaryString('R', 'L', it.second))}
+        .map { Pair(toBinaryString('B', 'F', it.first), toBinaryString('R', 'L', it.second))}
         .map { Pair(binaryToInt(it.first), binaryToInt(it.second)) }
 
     val maxId = rowColumnPasses
