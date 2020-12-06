@@ -1,12 +1,10 @@
 package day6
 
-import util.readInput
+import util.readGroupsSpaced
 
 fun main() {
 
-    val groupAnswers = readInput(6)
-            .joinToString(" ")
-            .split("  ") // double space is group separator
+    val groupAnswers = readGroupsSpaced(6)
             .map { it.replace(" ", "")} // remove spaces within groups
             .map { it.toCharArray().distinct().joinToString("")} // remove repeating chars
 
