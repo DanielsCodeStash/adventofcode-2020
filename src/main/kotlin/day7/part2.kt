@@ -12,11 +12,11 @@ fun main() {
 }
 
 private fun numSubBags(name: String, allBags: List<Bag>): Int {
-    val bag = allBags.first{it.name == name}
+    val bag = allBags.first { it.name == name }
 
-    return if(bag.containedBag.isEmpty()) {
+    return if(bag.containedBags.isEmpty()) {
         0
     } else {
-        bag.containedBag.sumBy { it.num + it.num * numSubBags(it.name, allBags) }
+        bag.containedBags.sumBy { it.num + it.num * numSubBags(it.name, allBags) }
     }
 }

@@ -26,4 +26,4 @@ fun main() {
 }
 
 private fun getBagsContaining(names: List<String>, bags: List<Bag>) =
-        bags.filter {it.containedBag.any { subBag -> names.contains(subBag.name) } }
+        bags.filter {it.containedBags.any { subBag -> names.contains(subBag.name) } }

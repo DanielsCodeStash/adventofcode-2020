@@ -1,6 +1,6 @@
 package day7
 
-data class Bag(val name: String, val num: Int, val containedBag: List<Bag> = emptyList()) {}
+data class Bag(val name: String, val num: Int, val containedBags: List<Bag> = emptyList()) {}
 
 fun toBag(row: String): Bag {
     val parts = row.replace(".", "").split(" bags contain ")
