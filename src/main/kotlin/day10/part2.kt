@@ -2,42 +2,31 @@ package day10
 
 import util.readInput
 
-data class Result(var answersFound: Long = 0)
-
-var numbers: List<Int> = readInput(10).map{it.toInt()}.sortedBy { it }
+var numbers: List<Int> = readInput(10).map{it.toInt()}
 val numToSum = mutableMapOf<Int, Long>()
 val endNum = numbers.maxOrNull()
 
 fun main() {
 
-    val possibilities = getPermutationsForNum(0, emptyList())
+    val permutations = getPermutationsForNum(0)
 
-    println("Answer: ${possibilities}")
+    println("Answer: $permutations")
 }
 
-fun getPermutationsForNum(startNum: Int, path: List<Int>): Long {
-
-    if(startNum == endNum)
-        return 1
+fun getPermutationsForNum(startNum: Int): Long {
 
     val possibleNumbers = numbers.filter { it > startNum && it <= startNum + 3  }
 
-    if(possibleNumbers.isEmpty()) return 1
+    if(startNum == endNum || possibleNumbers.isEmpty())
+        return 1
 
+    return possibleNumbers.sumByLong { numToSum.getOrPut(it){ getPermutationsForNum(it)} }
+}
 
-
-    var totalSumOfLower = 0L
-    for(num in possibleNumbers) {
-
-
-
-        if(numToSum.containsKey(num)) {
-            totalSumOfLower += numToSum.get(num)!!
-        } else {
-            val permutationsForNum = getPermutationsForNum(num, path + 1)
-            totalSumOfLower += permutationsForNum
-            numToSum.put(num, totalSumOfLower)
-        }
+inline fun <T> Iterable<T>.sumByLong(selector: (T) -> Long): Long {
+    var sum = 0L
+    for (element in this) {
+        sum += selector(element)
     }
-    return totalSumOfLower
+    return sum
 }
