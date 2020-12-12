@@ -1,6 +1,7 @@
 package day10
 
 import util.readInput
+import util.sumByLong
 
 var numbers: List<Int> = readInput(10).map{it.toInt()}
 val numToSum = mutableMapOf<Int, Long>()
@@ -23,10 +24,3 @@ fun getPermutationsForNum(startNum: Int): Long {
     return possibleNumbers.sumByLong { numToSum.getOrPut(it){ getPermutationsForNum(it)} }
 }
 
-inline fun <T> Iterable<T>.sumByLong(selector: (T) -> Long): Long {
-    var sum = 0L
-    for (element in this) {
-        sum += selector(element)
-    }
-    return sum
-}
